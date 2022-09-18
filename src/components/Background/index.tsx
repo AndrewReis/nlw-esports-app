@@ -1,10 +1,11 @@
-import React from 'react';
+// dependencies
 import { ImageBackground } from 'react-native'
 
+// styles & images
+import { styles }    from './styles';
 import backgroundImg from '../../assets/background-galaxy.png';
 
-import { styles } from './styles';
-
+// interfaces & types
 interface Props {
   children: React.ReactNode
 }
