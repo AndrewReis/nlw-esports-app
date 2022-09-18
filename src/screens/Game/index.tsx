@@ -17,10 +17,12 @@ import logoImg    from '../../assets/logo-nlw-esports.png';
 // interface & types
 import { GameParams }            from '../../@types/navigation'
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { DuoMatch }              from '../../components/DuoMatch';
 
 export function Game() {
   // state
-  const [duos, setDuos] = useState<DuoCardProps[]>([]); 
+  const [duos, setDuos]                           = useState<DuoCardProps[]>([]);
+  const [discordSelected, setDiscordSelected] = useState('');
 
   // variables
   const route      = useRoute();
@@ -37,6 +39,16 @@ export function Game() {
   // functions
   function handleGoBack() {
     navigation.goBack();
+  }
+
+  async function getUserDiscord(adsId: string) {
+    try {
+      fetch(`http://192.168.0.22:3333/ads/${adsId}/discord`)
+        .then(res => res.json())
+        .then(data => setDiscordSelected(data.discord))
+    } catch (error) {
+      
+    }
   }
 
   return (
@@ -59,14 +71,14 @@ export function Game() {
           style={styles.containerList}
           contentContainerStyle={styles.contentList}
           showsHorizontalScrollIndicator={false}
-          renderItem={ ({ item }) => (<DuoCard data={item} onConnect={() => {}} />) }
+          renderItem={ ({ item }) => (<DuoCard data={item} onConnect={() => getUserDiscord(item.id)} />) }
           ListEmptyComponent={() => (
             <Text style={styles.emptyListText}>
               Não há anúncios publicados para esse jogo.
             </Text>
           )}
         />
-        
+        <DuoMatch discord={discordSelected} visible={discordSelected.length !== 0} onClose={() => setDiscordSelected('')} />       
       </SafeAreaView>
     </Background>
   )
