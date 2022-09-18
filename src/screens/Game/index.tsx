@@ -1,9 +1,9 @@
 // dependencies
-import { useEffect, useState }                     from 'react';
-import { FlatList, Image, TouchableOpacity, View } from 'react-native'
-import { Entypo }                        from '@expo/vector-icons';
-import { SafeAreaView }                  from 'react-native-safe-area-context'
-import { useRoute, useNavigation }       from '@react-navigation/native'
+import { useEffect, useState } from 'react';
+import { FlatList, Image, TouchableOpacity, View, Text } from 'react-native'
+import { Entypo }                  from '@expo/vector-icons';
+import { SafeAreaView }            from 'react-native-safe-area-context'
+import { useRoute, useNavigation } from '@react-navigation/native'
 
 // components
 import { Background } from '../../components/Background'
@@ -60,6 +60,11 @@ export function Game() {
           contentContainerStyle={styles.contentList}
           showsHorizontalScrollIndicator={false}
           renderItem={ ({ item }) => (<DuoCard data={item} onConnect={() => {}} />) }
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>
+              Não há anúncios publicados para esse jogo.
+            </Text>
+          )}
         />
         
       </SafeAreaView>

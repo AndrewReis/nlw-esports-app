@@ -1,35 +1,36 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../theme";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex      : 1,
     alignItems: 'center'
   },
 
   header: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
+    width            : '100%',
+    flexDirection    : 'row',
+    alignItems       : 'center',
     paddingHorizontal: 32,
-    marginTop: 28,
-    justifyContent: 'space-between'
+    marginTop        : 28,
+    justifyContent   : 'space-between'
   },
 
   logo: {
-    width: 72,
+    width : 72,
     height: 40
   },
 
   right: {
-    width: 30,
+    width : 30,
     height: 30
   },
 
   cover: {
-    width: 311,
-    height: 160,
+    width       : 311,
+    height      : 160,
     borderRadius: 8,
-    marginTop: 32
+    marginTop   : 32
   },
 
   containerList: {
@@ -37,8 +38,14 @@ export const styles = StyleSheet.create({
   },
 
   contentList: {
-    paddingLeft: 32,
+    paddingLeft : 32,
     paddingRight: 64,
-    alignItems: 'flex-start'
+    alignItems  : 'flex-start'
+  },
+
+  emptyListText: {
+    color     : THEME.COLORS.CAPTION_300,
+    fontSize  : THEME.FONT_SIZE.SM,
+    fontFamily: THEME.FONT_FAMILY.REGULAR
   }
 })
